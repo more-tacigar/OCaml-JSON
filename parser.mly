@@ -13,7 +13,7 @@
 %token COMMA
 %token EOF
 
-%start <Json.value option> program
+%start <Syntax.value option> program
 
 %%
 
@@ -26,7 +26,7 @@ program
 
 value
 	: LEFT_BRACE; obj = object_fields; RIGHT_BRACE
-	{ `Asooc obj }
+	{ `Assoc obj }
 	| LEFT_BRACKET; vl = array_values; RIGHT_BRACKET
 	{ `List vl }
 	| s = STRING
@@ -49,12 +49,12 @@ object_fields
 	;
 
 object_field
-	: k = STRING; COLON; v = value
+	: k = ID; COLON; v = value
 	{ (k, v) }
 	;
 
-list_fields:
-	vl = separated_list(COMMA, value)
+array_values
+	: vl = separated_list(COMMA, value)
 	{ vl }
 	;
 
