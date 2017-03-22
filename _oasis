@@ -1,0 +1,14 @@
+OASISFormat: 0.4
+Name:        OCaml-JSON
+Version:     0.1
+Synopsis:    JSON Parser written in OCaml.
+Authors:     tacigar
+License:     GPL-3
+
+Executable "OCaml-JSON"
+  Path:            src
+  BuildTools:      menhir, ocamlbuild
+  BuildDepends:    menhirLib
+  MainIs:          main.ml
+  CompiledObject:  best
+  
